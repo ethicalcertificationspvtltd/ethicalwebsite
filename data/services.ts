@@ -18,7 +18,7 @@ export const services: Service[] = [
     summary:
       "Independent third-party ISO certification across quality, environment, health & safety, food safety and more.",
     description:
-      "Choosing Ethical Certifications brings internationally accredited certification recognized through IAF-member accreditation bodies including the Saudi Accreditation Center (SAAC) and Pakistan National Accreditation Council (PNAC). Our certifications support government tenders, supplier qualification and global market access.",
+      "Choosing Ethical Certifications brings internationally accredited certification recognized through IAF-member accreditation bodies including SAAC and Pakistan National Accreditation Council (PNAC). Our certifications support government tenders, supplier qualification and global market access.",
     highlights: [
       "IAF-recognized accreditation pathway",
       "Experienced multi-industry auditors",

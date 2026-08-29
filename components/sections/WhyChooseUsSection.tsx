@@ -7,6 +7,7 @@ import { SectionHeadingScroll } from "@/components/animations/SectionHeadingScro
 import { StaggerReveal, StaggerItem } from "@/components/animations/StaggerReveal";
 import { CardInnerReveal, RevealPart } from "@/components/animations/CardInnerReveal";
 import { ParallaxLayer } from "@/components/animations/ParallaxLayer";
+import { Floating3DObject } from "@/components/animations/Floating3DObject";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { gsap, registerGsap } from "@/lib/gsap/config";
 import { cn } from "@/lib/utils";
@@ -43,18 +44,20 @@ export function WhyChooseUsSection() {
   }, [reduce]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-20 md:py-28">
+    <section ref={sectionRef} data-section-tone="surface" className="relative overflow-hidden py-20 md:py-28">
+      <Floating3DObject variant="ring" seed={2} size="lg" className="right-[4%] top-[12%] opacity-40" />
+      <Floating3DObject variant="dot" seed={5} size="sm" className="left-[6%] bottom-[18%] opacity-50" />
       <ParallaxLayer speed={10} className="pointer-events-none absolute inset-0 tech-grid opacity-25" />
       <div className="container-premium relative z-10">
         <SectionHeadingScroll
           align="center"
           eyebrow="Why Choose Us"
           title="Why businesses choose Ethical Certifications"
-          description="A trusted independent certification partner combining accreditation credibility, experienced auditors, and practical support for organizations across Saudi Arabia and beyond."
+          description="A trusted independent certification partner combining accreditation credibility, experienced auditors, and practical support for organizations worldwide."
           light={false}
         />
 
-        <StaggerReveal className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3" stagger={0.12} variant="depth">
+        <StaggerReveal className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3" stagger={0.12} variant="trust" scrub idleFloat>
           {whyChooseUs.map((item, i) => (
             <StaggerItem key={item.title}>
               <div

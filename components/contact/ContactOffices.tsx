@@ -25,24 +25,6 @@ export function ContactOffices() {
           },
         ]}
       />
-      <OfficeCard
-        title="Saudi Arabia"
-        lines={[
-          { icon: MapPin, text: siteConfig.addresses.saudi },
-          { icon: Clock, text: siteConfig.hours.ksa },
-          { icon: Mail, text: siteConfig.emailKsa, href: `mailto:${siteConfig.emailKsa}` },
-          {
-            icon: Phone,
-            text: `${siteConfig.phones.ksaSales} (Sales)`,
-            href: `tel:${siteConfig.phones.ksaSalesTel}`,
-          },
-          {
-            icon: Phone,
-            text: `${siteConfig.phones.ksaAdmin} (Admin)`,
-            href: `tel:${siteConfig.phones.ksaAdminTel}`,
-          },
-        ]}
-      />
       <div className="overflow-hidden rounded-3xl border border-border bg-muted-bg">
         <iframe
           title="Ethical Certifications Lahore map"

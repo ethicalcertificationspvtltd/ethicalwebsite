@@ -69,6 +69,7 @@ export function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
+      data-section-tone="surface"
       className="relative overflow-hidden bg-muted-bg/50 py-20 md:py-28"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -84,7 +85,7 @@ export function TestimonialsSection() {
           light={false}
         />
 
-        <div ref={carouselRef} className="relative mt-12 perspective-[1400px]">
+        <div ref={carouselRef} className="relative mt-12 perspective-[1400px]" style={{ transformStyle: "preserve-3d" }}>
           <div className="pointer-events-none absolute left-1/2 top-8 h-64 w-[80%] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
 
           {!reduce && (
@@ -107,8 +108,8 @@ export function TestimonialsSection() {
               key={testimonials[index].id}
               custom={dir}
               initial={{ opacity: 0, x: dir * 40, rotateY: dir * 8, scale: 0.94 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0, scale: 1, z: 0 }}
-              exit={{ opacity: 0, x: dir * -30, rotateY: dir * -6, scale: 0.92 }}
+              animate={{ opacity: 1, x: 0, rotateY: 0, scale: 1, z: 80 }}
+              exit={{ opacity: 0, x: dir * -30, rotateY: dir * -6, scale: 0.88, z: -60 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -125,7 +126,7 @@ export function TestimonialsSection() {
                 if (dx > 50) prev();
                 if (dx < -50) next();
               }}
-              className="surface-light relative z-10 mx-auto max-w-4xl cursor-grab active:cursor-grabbing rounded-3xl border border-border/90 bg-card/95 p-8 shadow-[0_30px_80px_rgba(11,18,16,0.08)] backdrop-blur-sm md:p-12"
+              className="surface-light testimonial-card-active relative z-10 mx-auto max-w-4xl cursor-grab active:cursor-grabbing rounded-3xl border border-border/90 bg-card/95 p-8 shadow-[0_30px_80px_rgba(11,18,16,0.08)] backdrop-blur-sm md:p-12"
               style={{ transformStyle: "preserve-3d" }}
             >
               <TestimonialContent item={testimonials[index]} index={index} />
@@ -187,10 +188,12 @@ function TestimonialStackCard({
     <button
       type="button"
       onClick={onClick}
-      className={`pointer-events-auto absolute top-1/2 z-0 hidden w-[min(72%,36rem)] -translate-y-1/2 rounded-3xl border border-border/70 bg-white/70 p-8 opacity-45 shadow-lg backdrop-blur-sm transition hover:opacity-65 md:block md:p-10 ${
-        position === "prev" ? "left-[2%] -rotate-2" : "right-[2%] rotate-2"
+      className={`testimonial-card-stack pointer-events-auto absolute top-1/2 z-0 hidden w-[min(72%,36rem)] -translate-y-1/2 rounded-3xl border border-border/70 bg-white/70 p-8 opacity-45 shadow-lg backdrop-blur-sm transition hover:opacity-65 md:block md:p-10 ${
+        position === "prev" ? "left-[2%]" : "right-[2%]"
       }`}
-      style={{ transform: `translateY(-50%) scale(0.92) ${position === "prev" ? "rotateY(8deg)" : "rotateY(-8deg)"}` }}
+      style={{
+        transform: `translateY(-50%) translateZ(-50px) scale(0.92) rotateY(${position === "prev" ? "10deg" : "-10deg"})`,
+      }}
       aria-label={position === "prev" ? "Previous testimonial preview" : "Next testimonial preview"}
     >
       <p className="line-clamp-3 text-left font-display text-lg text-foreground/80">“{item.quote}”</p>

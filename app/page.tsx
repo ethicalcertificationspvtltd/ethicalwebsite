@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { SectionBackgroundTransition } from "@/components/animations/SectionBackgroundTransition";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
-import { SaudiArabiaSection } from "@/components/sections/SaudiArabiaSection";
 import { IndustriesSection } from "@/components/sections/IndustriesSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { TrustScrollSection } from "@/components/sections/TrustScrollSection";
@@ -21,12 +21,12 @@ import { faqItems } from "@/data/homepage";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "ISO Certification in Saudi Arabia | Ethical Certifications",
+  title: "ISO Certification | Ethical Certifications",
   description:
-    "Independent ISO certification body in Saudi Arabia offering SAAC-accredited certification, inspection, calibration and training. ISO 9001, ISO 14001, ISO 45001, ISO 22000 and more.",
+    "Independent ISO certification body offering SAAC and PNAC-accredited certification, inspection, calibration and training. ISO 9001, ISO 14001, ISO 45001, ISO 22000 and more.",
   alternates: { canonical: "/" },
   keywords: [
-    "ISO certification Saudi Arabia",
+    "ISO certification",
     "ISO certification body",
     "SAAC accredited certification",
     "ISO 9001",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     "Ethical Certifications",
   ],
   openGraph: {
-    title: "ISO Certification in Saudi Arabia | Ethical Certifications",
+    title: "ISO Certification | Ethical Certifications",
     description:
-      "Accredited ISO certification, inspection, calibration and training for organizations across Saudi Arabia and beyond.",
+      "Accredited ISO certification, inspection, calibration and training for organizations worldwide.",
     url: siteConfig.url,
   },
 };
@@ -64,12 +64,13 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
+      <SectionBackgroundTransition />
+
       <HeroSection />
       <WhyChooseUsSection />
       <ServicesSection />
       <CertificationsSection />
       <HowItWorksSection />
-      <SaudiArabiaSection />
       <IndustriesSection />
       <StatsSection />
       <TrustScrollSection />

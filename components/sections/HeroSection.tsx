@@ -80,17 +80,40 @@ export function HeroSection() {
 
       if (visualRef.current) {
         gsap.to(visualRef.current, {
-          y: -48,
-          scale: 1.08,
-          rotateY: -6,
-          transformPerspective: 1200,
+          y: -72,
+          scale: 1.06,
+          rotateY: -8,
+          z: -40,
+          transformPerspective: 1400,
           ease: "none",
           scrollTrigger: scrubCfg,
         });
 
+        const stage = visualRef.current.querySelector(".hero-cert-stage");
+        const arc = visualRef.current.querySelector(".hero-cert-arc");
         const bg = visualRef.current.querySelector(".hero-parallax-bg");
         const orbits = visualRef.current.querySelectorAll(".hero-orbit-scrub");
         const badges = visualRef.current.querySelectorAll(".hero-float-badge-scrub");
+
+        if (stage) {
+          gsap.to(stage, {
+            z: -60,
+            y: -32,
+            scale: 0.92,
+            transformPerspective: 1400,
+            ease: "none",
+            scrollTrigger: scrubCfg,
+          });
+        }
+        if (arc) {
+          gsap.to(arc, {
+            rotateX: 8,
+            rotateY: 12,
+            transformPerspective: 1400,
+            ease: "none",
+            scrollTrigger: scrubCfg,
+          });
+        }
 
         if (bg) {
           gsap.to(bg, { scale: 1.12, ease: "none", scrollTrigger: scrubCfg });
@@ -137,7 +160,7 @@ export function HeroSection() {
   }, [reduce]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-x-clip bg-transparent">
+    <section ref={sectionRef} data-section-tone="hero" className="relative overflow-x-clip bg-transparent">
       <div className="container-premium relative z-10 pb-0 pt-[5.5rem] md:pt-28">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10 xl:gap-14">
           <div ref={contentRef} className="relative z-20 min-w-0 py-4 lg:py-8 will-change-transform">
@@ -163,8 +186,8 @@ export function HeroSection() {
               className="mt-5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base"
             >
               Independent, accredited certification and inspection services helping organizations
-              across Saudi Arabia achieve international standards, strengthen credibility, and unlock
-              new business opportunities.
+              achieve international standards, strengthen credibility, and unlock new business
+              opportunities worldwide.
             </motion.p>
 
             <motion.div
@@ -233,7 +256,7 @@ export function HeroSection() {
                 Trusted by organizations around the world
               </p>
             </div>
-            <StaggerReveal className="grid grid-cols-3 divide-x divide-primary/8 sm:grid-cols-6" stagger={0.08} variant="scale">
+            <StaggerReveal className="grid grid-cols-3 divide-x divide-primary/8 sm:grid-cols-6" stagger={0.1} variant="trust" scrub idleFloat>
               {trustLogos.map((client) => (
                 <StaggerItem key={client.name}>
                   <div className="flex min-h-[4.5rem] items-center justify-center px-3 py-4 sm:min-h-[5.25rem] sm:px-4 sm:py-5">

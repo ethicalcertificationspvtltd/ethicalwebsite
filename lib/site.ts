@@ -6,7 +6,6 @@ export const siteConfig = {
     "Independent third-party ISO certification, inspection, calibration and training body accredited by SAAC and PNAC.",
   url: "https://etcert.com",
   email: "info@etcert.com",
-  emailKsa: "info@ksa.etcert.com",
   emailCan: "can@etcert.com",
   phones: {
     pakistanSales: "+92 339 111 9001",
@@ -15,22 +14,15 @@ export const siteConfig = {
     pakistanAdminTel: "+924235447881",
     pakistanSalesAlt: "+92 333 862 4360",
     pakistanSalesAltTel: "+923338624360",
-    ksaSales: "+966 541 411 193",
-    ksaSalesTel: "+966541411193",
-    ksaAdmin: "+966 555 982 593",
-    ksaAdminTel: "+966555982593",
     canadaSales: "+1 (403) 992-7474",
     canadaSalesTel: "+14039927474",
   },
   hours: {
     pakistan: "Monday – Saturday, 09:30 AM – 05:00 PM",
-    ksa: "Monday – Sunday, 09:30 AM – 05:00 PM",
   },
   addresses: {
     pakistan:
       "Plot # 169, Block-B, Muhafiz Town, Phase-II, Near DHA Rahbar, Main Defence Road, Lahore, Pakistan.",
-    saudi:
-      "JCAA2091, 2091 Prince Muhammad Ibn Abdulaziz, 8909 Al Andalus Dist, 23326 Jeddah, Saudi Arabia",
   },
   social: {
     linkedin: "https://www.linkedin.com/company/105093782",

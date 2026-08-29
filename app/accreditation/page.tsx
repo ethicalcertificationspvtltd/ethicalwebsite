@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Accreditation",
   description:
-    "Ethical Certifications is accredited by Saudi Accreditation Center (SAAC) and Pakistan National Accreditation Council (PNAC), supporting IAF-recognized certification outcomes.",
+    "Ethical Certifications is accredited by SAAC and Pakistan National Accreditation Council (PNAC), supporting IAF-recognized certification outcomes.",
   alternates: { canonical: "/accreditation" },
 };
 
@@ -18,7 +18,7 @@ export default function AccreditationPage() {
       <PageHero
         eyebrow="World Wide Acceptability"
         title="Accreditations"
-        description="Proudly accredited by the Saudi Accreditation Center (SAC/SAAC) and Pakistan National Accreditation Council (PNAC)."
+        description="Proudly accredited by SAAC (SAC) and Pakistan National Accreditation Council (PNAC)."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Accreditation" },

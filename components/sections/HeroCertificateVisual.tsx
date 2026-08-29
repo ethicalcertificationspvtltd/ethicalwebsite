@@ -197,6 +197,28 @@ export function HeroCertificateVisual({ className }: { className?: string }) {
             delay={1.2}
             duration={9.5}
           />
+          <HeroFloatingBadge
+            code="ISO 27001"
+            title="Information Security"
+            orbit
+            orbitStart={144}
+            orbitRadius="11.5rem"
+            orbitDuration={32}
+            depth={0.42}
+            delay={0.8}
+            duration={10.5}
+          />
+          <HeroFloatingBadge
+            code="ISO 45001"
+            title="Health & Safety"
+            orbit
+            orbitStart={216}
+            orbitRadius="8.5rem"
+            orbitDuration={26}
+            depth={0.68}
+            delay={2}
+            duration={9}
+          />
         </div>
       )}
 

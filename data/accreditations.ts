@@ -9,7 +9,7 @@ export type Accreditation = {
 export const accreditations: Accreditation[] = [
   {
     id: "saac",
-    name: "Saudi Accreditation Center",
+    name: "SAAC",
     shortName: "SAAC / SAC",
     description:
       "IAF-recognized accreditation supporting internationally accepted certification outcomes for organizations requiring SAC-accredited certification.",

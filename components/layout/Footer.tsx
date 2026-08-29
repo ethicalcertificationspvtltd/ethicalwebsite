@@ -39,8 +39,7 @@ export function Footer() {
                 <span className="text-primary">Go Global</span>
               </h2>
               <p className="mt-3 max-w-lg text-sm text-muted">
-                {siteConfig.tagline} — trusted ISO certification across Pakistan, Saudi Arabia
-                and beyond.
+                {siteConfig.tagline} — trusted ISO certification across Pakistan and beyond.
               </p>
             </div>
             <div className="flex justify-center md:justify-end">
@@ -163,33 +162,26 @@ export function Footer() {
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>
-                  <span className="block font-semibold text-foreground">Saudi Arabia</span>
-                  {siteConfig.addresses.saudi}
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>
                   <span className="block font-semibold text-foreground">Pakistan</span>
                   {siteConfig.addresses.pakistan}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary" />
-                <a href={`mailto:${siteConfig.emailKsa}`} className="hover:text-primary">
-                  {siteConfig.emailKsa}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <a href={`tel:${siteConfig.phones.ksaSalesTel}`} className="hover:text-primary">
-                  KSA: {siteConfig.phones.ksaSales}
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-primary">
+                  {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary" />
                 <a href={`tel:${siteConfig.phones.pakistanSalesTel}`} className="hover:text-primary">
                   PK: {siteConfig.phones.pakistanSales}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary" />
+                <a href={`tel:${siteConfig.phones.pakistanAdminTel}`} className="hover:text-primary">
+                  PK Admin: {siteConfig.phones.pakistanAdmin}
                 </a>
               </li>
             </ul>

@@ -12,7 +12,7 @@ import { BackgroundTriangles } from "@/components/layout/BackgroundTriangles";
 import { Providers, PageTransition } from "@/components/layout/Providers";
 import { GlobalFloatingWorld } from "@/components/animations/GlobalFloatingWorld";
 
-/* Corporate event-style typography — DM Sans (Jeddah Construct / dmg events feel) */
+/* Corporate typography — DM Sans */
 const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],

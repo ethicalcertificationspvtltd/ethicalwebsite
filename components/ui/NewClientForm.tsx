@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 type Status = "idle" | "loading" | "success" | "error";
 
 const countries = [
-  "Kingdom of Saudi Arabia",
   "Canada",
   "Pakistan",
   "UAE",
@@ -116,7 +115,7 @@ export function NewClientForm({ className }: { className?: string }) {
         <Field
           label="Legal Registration Number"
           name="registrationNumber"
-          hint="Saudi Arabia (CR), UAE (TLN), Pakistan (NTN), Canada (BN)"
+          hint="UAE (TLN), Pakistan (NTN), Canada (BN)"
           required
         >
           <input id="registrationNumber" name="registrationNumber" required className={fieldClass} />

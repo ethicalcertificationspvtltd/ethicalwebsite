@@ -1609,6 +1609,198 @@ body.has-custom-cursor * {
   }
 }
 
+/* Section atmosphere — scroll-scrubbed crossfade */
+.atmo-canvas {
+  isolation: isolate;
+}
+
+.atmo-shift {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(36, 168, 124, 0.12) 0%,
+    rgba(248, 252, 251, 0.35) 28%,
+    rgba(255, 255, 255, 0.42) 52%,
+    rgba(0, 61, 57, 0.06) 78%,
+    rgba(36, 168, 124, 0.18) 100%
+  );
+  background-size: 100% 320%;
+  background-position: 0% 0%;
+  opacity: 0.55;
+}
+
+.atmo-layer {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.01s linear;
+  will-change: opacity;
+}
+
+.atmo-layer--hero {
+  background:
+    radial-gradient(ellipse 80% 50% at 70% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(0, 89, 83, 0.06), transparent 50%);
+}
+
+.atmo-layer--surface {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(255, 255, 255, 0.55), transparent 60%),
+    linear-gradient(180deg, rgba(248, 252, 251, 0.5) 0%, transparent 70%);
+}
+
+.atmo-layer--deep {
+  background:
+    radial-gradient(ellipse 65% 50% at 50% 100%, rgba(0, 61, 57, 0.12), transparent 55%),
+    linear-gradient(0deg, rgba(0, 89, 83, 0.06) 0%, transparent 50%);
+}
+
+.atmo-layer--mint {
+  background:
+    radial-gradient(ellipse 55% 40% at 80% 30%, rgba(36, 168, 124, 0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 10% 70%, rgba(192, 156, 84, 0.08), transparent 50%);
+}
+
+/* Card idle float after entrance */
+.card-idle-float {
+  animation: card-idle-float 7s ease-in-out infinite;
+}
+
+@keyframes card-idle-float {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotateX(1deg);
+  }
+}
+
+/* Floating 3D decorative objects */
+.float-obj {
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.float-obj--ring {
+  border-radius: 50%;
+  border: 1px solid rgba(0, 89, 83, 0.1);
+}
+
+.float-obj--dot {
+  border-radius: 50%;
+  background: rgba(0, 89, 83, 0.14);
+}
+
+.float-obj--line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 89, 83, 0.12), transparent);
+}
+
+.float-obj--grid {
+  background-image:
+    linear-gradient(rgba(0, 89, 83, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 89, 83, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+}
+
+.float-obj--verify {
+  border-radius: 50%;
+  border: 1px solid rgba(36, 168, 124, 0.2);
+}
+
+.float-obj--verify::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  color: rgba(0, 89, 83, 0.4);
+}
+
+.float-obj--sm { width: 2.5rem; height: 2.5rem; }
+.float-obj--md { width: 5rem; height: 5rem; }
+.float-obj--lg { width: 9rem; height: 9rem; }
+
+.float-obj--drift-a {
+  animation: float-obj-drift-a 12s ease-in-out infinite;
+}
+
+.float-obj--drift-b {
+  animation: float-obj-drift-b 14s ease-in-out infinite;
+}
+
+@keyframes float-obj-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(8px, -14px, 0) rotate(4deg); }
+}
+
+@keyframes float-obj-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-10px, 12px, 0) rotate(-3deg); }
+}
+
+/* Testimonial 3D depth */
+.testimonial-card-active {
+  transform: translateZ(80px) scale(1);
+  box-shadow:
+    0 30px 80px rgba(11, 18, 16, 0.1),
+    0 0 0 1px rgba(0, 89, 83, 0.04);
+}
+
+.testimonial-card-stack {
+  transform-style: preserve-3d;
+}
+
+/* Global world mouse parallax */
+.world-canvas {
+  --world-px: 0px;
+  --world-py: 0px;
+}
+
+.world-ring,
+.world-dot,
+.world-line,
+.world-verify,
+.world-grid {
+  transform: translate3d(var(--world-px), var(--world-py), 0);
+}
+
+.world-ring--3 {
+  width: 22rem;
+  height: 22rem;
+  left: -8rem;
+  top: 32%;
+  border-style: dashed;
+  border-color: rgba(36, 168, 124, 0.08);
+  animation: world-float-b 20s ease-in-out infinite 1.5s;
+}
+
+.world-dot--4 {
+  width: 5px;
+  height: 5px;
+  right: 10%;
+  bottom: 38%;
+  animation: world-float-a 12s ease-in-out infinite 2.5s;
+}
+
+.world-grid--1 {
+  width: 12rem;
+  height: 12rem;
+  right: 4%;
+  top: 12%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  opacity: 0.35;
+  animation: world-float-b 16s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-glow-drift,
   .animate-glow-drift-alt,
@@ -1637,6 +1829,14 @@ body.has-custom-cursor * {
   .cta-orbit-ring--2,
   .cta-floating-cert,
   .world-ring,
+  .world-dot,
+  .world-line,
+  .world-verify,
+  .world-grid,
+  .card-idle-float,
+  .float-obj--drift-a,
+  .float-obj--drift-b,
+  .atmo-shift,
   .world-dot,
   .world-line,
   .world-verify,

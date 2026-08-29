@@ -35,6 +35,10 @@ type StaggerProps = {
   delay?: number;
   variant?: Variant;
   start?: string;
+  /** Tie entrance directly to scroll position (reverses on scroll up) */
+  scrub?: boolean | number;
+  /** Add subtle idle float after cards enter */
+  idleFloat?: boolean;
 };
 
 export function StaggerReveal({
@@ -44,6 +48,8 @@ export function StaggerReveal({
   delay = 0,
   variant = "depth",
   start = SCROLL_START,
+  scrub = false,
+  idleFloat = false,
 }: StaggerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -58,26 +64,51 @@ export function StaggerReveal({
 
     const ctx = gsap.context(() => {
       gsap.set(items, initial[variant]);
-      gsap.to(items, {
+
+      const tweenVars: gsap.TweenVars = {
         opacity: 1,
         y: 0,
         x: 0,
         scale: 1,
         rotateX: 0,
-        duration: 0.75,
-        stagger,
-        delay,
         ease: EASE.cinematic,
-        scrollTrigger: {
-          trigger: container,
-          start,
-          toggleActions: "play none none none",
-        },
-      });
+        stagger,
+      };
+
+      if (scrub) {
+        gsap.to(items, {
+          ...tweenVars,
+          scrollTrigger: {
+            trigger: container,
+            start: "top 88%",
+            end: "top 45%",
+            scrub: typeof scrub === "number" ? scrub : 1.2,
+          },
+        });
+      } else {
+        gsap.to(items, {
+          ...tweenVars,
+          duration: 0.75,
+          delay,
+          scrollTrigger: {
+            trigger: container,
+            start,
+            toggleActions: "play none none none",
+          },
+          onComplete: idleFloat
+            ? () => {
+                items.forEach((item, i) => {
+                  item.classList.add("card-idle-float");
+                  (item as HTMLElement).style.animationDelay = `${i * 0.35}s`;
+                });
+              }
+            : undefined,
+        });
+      }
     }, container);
 
     return () => ctx.revert();
-  }, [reduce, stagger, delay, variant, start]);
+  }, [reduce, stagger, delay, variant, start, scrub, idleFloat]);
 
   return (
     <div ref={ref} className={cn(className)}>

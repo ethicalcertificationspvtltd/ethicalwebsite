@@ -95,10 +95,10 @@ export function AboutPreview() {
           <SectionHeadingScroll
             eyebrow="Who we are"
             title={siteConfig.name}
-            description={`At ${siteConfig.name}, we specialize in providing independent third-party ISO Certification and Inspection services across a wide range of industrial sectors. We are accredited by two IAF-recognized international accreditation boards — Saudi Accreditation Center (SAAC) and Pakistan National Accreditation Council (PNAC) — on ${siteConfig.accreditationStandards.join(" & ")} standards.`}
+            description={`At ${siteConfig.name}, we specialize in providing independent third-party ISO Certification and Inspection services across a wide range of industrial sectors. We are accredited by two IAF-recognized international accreditation boards — SAAC and Pakistan National Accreditation Council (PNAC) — on ${siteConfig.accreditationStandards.join(" & ")} standards.`}
           />
           <p className="mt-4 leading-relaxed text-muted">
-            Saudi accreditation holds global recognition, making it a crucial factor for many
+            Accredited certification holds global recognition, making it a crucial factor for many
             companies that require certification from an accredited body. Our team consists of
             experienced professionals with extensive backgrounds across multiple industries.
           </p>

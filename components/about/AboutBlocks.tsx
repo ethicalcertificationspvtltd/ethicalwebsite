@@ -7,7 +7,7 @@ export function AboutCopy() {
   return (
     <div>
       <p className="text-muted leading-relaxed">
-        We offer independent, third-party Certification and Inspection services across a wide range of industrial sectors. As an Accredited Certification and Inspection Body, we hold recognition from the Saudi Accreditation Center (SAAC) and Pakistan National Accreditation Council (PNAC), allowing us to issue internationally recognized certifications.
+        We offer independent, third-party Certification and Inspection services across a wide range of industrial sectors. As an Accredited Certification and Inspection Body, we hold recognition from SAAC and Pakistan National Accreditation Council (PNAC), allowing us to issue internationally recognized certifications.
       </p>
       <p className="mt-4 text-muted leading-relaxed">
         Organizations prefer certification from PNAC and SAC accredited Certification Bodies because of their proven credibility and global acceptance. At Ethical Certifications, our experienced professionals bring knowledge across diverse industries and focus on understanding your business needs during the audit process.

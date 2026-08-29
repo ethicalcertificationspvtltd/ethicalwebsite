@@ -53,7 +53,7 @@ export function AccreditationSection() {
   const iaf = accreditations.find((a) => a.id === "iaf");
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-background py-20 md:py-28">
+    <section ref={sectionRef} data-section-tone="mint" className="relative overflow-hidden bg-background py-20 md:py-28">
       <ParallaxLayer speed={8} className="pointer-events-none absolute inset-0 tech-grid opacity-30" />
       <div data-accr-ring className="pointer-events-none absolute left-1/2 top-[38%] h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10 opacity-40" aria-hidden />
       <div data-accr-ring className="pointer-events-none absolute left-1/2 top-[38%] h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-accent/20 opacity-30" aria-hidden />
@@ -62,7 +62,7 @@ export function AccreditationSection() {
         <SectionHeadingScroll
           eyebrow="IAF Recognition"
           title="Our Accreditations"
-          description="Recognized through the International Accreditation Forum (IAF) pathway via SAAC and PNAC — supporting trusted, internationally aligned certification outcomes for organizations in Saudi Arabia and beyond."
+          description="Recognized through the International Accreditation Forum (IAF) pathway via SAAC and PNAC — supporting trusted, internationally aligned certification outcomes for organizations worldwide."
           light={false}
         />
 

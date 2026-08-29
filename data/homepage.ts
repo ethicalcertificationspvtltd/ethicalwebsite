@@ -29,7 +29,7 @@ export const heroTrustBadges = [
   { label: "IAF Recognition", icon: Globe2 },
   { label: "Internationally Recognized", icon: Award },
   { label: "Experienced Auditors", icon: Users },
-  { label: "Saudi Arabia Based", icon: MapPin },
+  { label: "Pakistan Based", icon: MapPin },
   { label: "Global Certification Services", icon: ShieldCheck },
 ] as const;
 
@@ -98,15 +98,6 @@ export const certificationSteps = [
     title: "Ongoing Improvement",
     description: "Surveillance audits and continual improvement support long-term compliance and performance.",
   },
-] as const;
-
-export const saudiBenefits = [
-  "Supplier qualification for corporate and industrial buyers",
-  "Stronger positioning for government and private tenders",
-  "Enhanced market credibility across the Kingdom and GCC",
-  "Improved readiness for regulatory and customer expectations",
-  "Operational improvement through structured management systems",
-  "Support for international business and export opportunities",
 ] as const;
 
 export const industries = [

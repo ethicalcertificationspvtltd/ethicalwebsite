@@ -6,7 +6,7 @@ import { ContactQuoteBlock } from "@/components/contact/ContactQuoteBlock";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Ethical Certifications in Pakistan and Saudi Arabia for ISO certification, inspection, calibration and training inquiries.",
+    "Contact Ethical Certifications in Pakistan for ISO certification, inspection, calibration and training inquiries.",
   alternates: { canonical: "/contact" },
 };
 
@@ -16,7 +16,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Let's get in touch"
-        description="Reach our Pakistan or Saudi Arabia teams for quotations, verification and service inquiries."
+        description="Reach our Pakistan team for quotations, verification and service inquiries."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Contact" },

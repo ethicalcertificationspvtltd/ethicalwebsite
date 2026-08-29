@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -26,6 +26,7 @@ export function TiltCard({
   scaleOnHover = 1.01,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
   const reduce = useReducedMotion();
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
@@ -38,6 +39,7 @@ export function TiltCard({
 
   function onMove(e: React.MouseEvent) {
     if (reduce) return;
+    setHovered(true);
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -53,6 +55,7 @@ export function TiltCard({
   }
 
   function onLeave() {
+    setHovered(false);
     rotateX.set(0);
     rotateY.set(0);
     glareX.set(50);
@@ -72,12 +75,15 @@ export function TiltCard({
         transformStyle: "preserve-3d",
         transformPerspective: 1100,
       }}
-      className={cn("relative will-change-transform", className)}
+      className={cn("group relative will-change-transform", className)}
     >
       {glow ? (
         <motion.div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-20 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className={cn(
+            "pointer-events-none absolute inset-0 z-20 rounded-[inherit] transition-opacity duration-300",
+            hovered ? "opacity-100" : "opacity-0",
+          )}
           style={{ background: glare, mixBlendMode: "soft-light" }}
         />
       ) : null}

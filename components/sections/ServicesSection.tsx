@@ -31,7 +31,7 @@ export function ServicesSection() {
   }, [reduce]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-20 md:py-28">
+    <section ref={sectionRef} data-section-tone="surface" className="relative overflow-hidden py-20 md:py-28">
       <ParallaxLayer speed={-6} className="pointer-events-none absolute -right-20 top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
       <div className="container-premium relative z-10">
         <SectionHeadingScroll
