@@ -59,9 +59,9 @@ export function SectionHeadingScroll({
       <h2
         data-heading-title
         className={cn(
-          "font-display text-4xl font-bold leading-[1.06] tracking-tight text-balance md:text-5xl",
-          light === false ? "text-foreground" : "text-white",
-          gradientTitle && light !== false && "text-gradient-ignite",
+          "section-heading-title font-display text-3xl font-bold leading-[1.08] tracking-tight text-balance sm:text-4xl md:text-5xl",
+          light === true ? "text-white" : "text-foreground",
+          gradientTitle && light !== true && "text-gradient-ignite",
         )}
       >
         {title}
@@ -72,7 +72,7 @@ export function SectionHeadingScroll({
           data-heading-desc
           className={cn(
             "mt-4 text-base leading-relaxed md:text-lg",
-            light === false ? "text-muted" : "text-white/75",
+            light === true ? "text-white/75" : "text-muted",
           )}
         >
           {description}

@@ -11,10 +11,35 @@ import {
 import { certifications } from "@/data/certifications";
 import { CertificationCard } from "@/components/ui/Cards";
 import { SectionHeadingScroll } from "@/components/animations/SectionHeadingScroll";
+import { useIsMobile } from "@/lib/useMediaQuery";
+
+type CardItem = (typeof certifications)[number];
+
+function CertificationsCarousel({ cards }: { cards: CardItem[] }) {
+  return (
+    <>
+      <p className="container-premium mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-muted md:hidden">
+        Swipe to explore
+      </p>
+      <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-[max(1rem,calc((100vw-72rem)/2))] pb-6 pt-1 no-scrollbar md:gap-5">
+        {cards.map((c) => (
+          <CertificationCard
+            key={c.slug}
+            code={c.code}
+            year={c.year}
+            title={c.title}
+            summary={c.summary}
+            href={c.href}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
 
 /**
- * Vertical scroll → horizontal cards while the section is pinned.
- * After the last card, vertical scroll continues to the next section.
+ * Desktop: vertical scroll → horizontal cards while pinned.
+ * Mobile / tablet: native swipe carousel (no scroll-jacking).
  */
 export function CertificationsSection() {
   const featured = certifications.filter((c) => c.featured);
@@ -22,11 +47,13 @@ export function CertificationsSection() {
   const cards = [...featured, ...more];
 
   const reduce = useReducedMotion();
+  const isMobile = useIsMobile();
   const containerRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [travel, setTravel] = useState(0);
 
   useLayoutEffect(() => {
+    if (reduce || isMobile) return;
     const track = trackRef.current;
     if (!track) return;
 
@@ -44,7 +71,7 @@ export function CertificationsSection() {
       ro.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, [cards.length]);
+  }, [cards.length, reduce, isMobile]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -58,10 +85,9 @@ export function CertificationsSection() {
     { stiffness: 90, damping: 28 },
   );
 
-  // Reduced motion / no travel: normal swipe carousel
-  if (reduce) {
+  if (reduce || isMobile) {
     return (
-      <section className="overflow-hidden bg-background py-20 md:py-28">
+      <section className="overflow-x-clip bg-background py-16 md:py-28">
         <div className="container-premium">
           <SectionHeadingScroll
             eyebrow="ISO Standards"
@@ -69,23 +95,11 @@ export function CertificationsSection() {
             description="Interactive overview of standards listed by Ethical Certifications — from quality and environment to food safety and information security."
           />
         </div>
-        <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-[max(1rem,calc((100vw-72rem)/2))] pb-4 no-scrollbar">
-          {cards.map((c) => (
-            <CertificationCard
-              key={c.slug}
-              code={c.code}
-              year={c.year}
-              title={c.title}
-              summary={c.summary}
-              href={c.href}
-            />
-          ))}
-        </div>
+        <CertificationsCarousel cards={cards} />
       </section>
     );
   }
 
-  // ~1 viewport of pin + extra viewport-distance per ~2 cards for a controlled scrub
   const trackVh = Math.max(220, 100 + cards.length * 28);
 
   return (
@@ -135,15 +149,6 @@ export function CertificationsSection() {
               />
             ))}
           </motion.div>
-        </div>
-
-        <div className="container-premium relative z-10 mt-8 md:hidden">
-          <div className="h-1 overflow-hidden rounded-full bg-primary/10">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-primary to-primary-light"
-              style={{ width: progressWidth }}
-            />
-          </div>
         </div>
       </div>
     </section>

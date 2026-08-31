@@ -22,9 +22,9 @@ const variants = {
     "bg-primary !text-white shadow-[0_14px_36px_rgba(0,89,83,0.28)] hover:bg-primary-mid hover:shadow-[0_16px_40px_rgba(0,89,83,0.32)]",
   secondary:
     "bg-white !text-primary shadow-[0_8px_24px_rgba(0,0,0,0.1)] hover:bg-white/95",
-  ghost: "bg-transparent !text-white hover:bg-white/15",
+  ghost: "bg-transparent !text-primary hover:bg-primary/8",
   outline:
-    "bg-white/90 border border-white/40 !text-white hover:border-white hover:bg-white hover:!text-primary hover:shadow-[0_0_28px_rgba(255,255,255,0.15)]",
+    "bg-white border border-primary/25 !text-primary hover:border-primary hover:bg-[#f8fcfb] hover:shadow-[0_0_28px_rgba(0,89,83,0.08)]",
   white:
     "bg-white !text-primary shadow-[0_8px_24px_rgba(0,0,0,0.1)] hover:bg-white/95 hover:shadow-[0_12px_32px_rgba(0,0,0,0.14)]",
 };

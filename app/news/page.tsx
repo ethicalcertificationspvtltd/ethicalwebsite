@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { NewsCard } from "@/components/news/NewsCard";
-import { newsItems } from "@/data/news";
+import { newsItems as fallbackNews } from "@/data/news";
+import { fetchEthicalWebNews } from "@/lib/ethical-api";
+
 export const metadata: Metadata = {
   title: "News",
   description:
@@ -9,7 +11,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/news" },
 };
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const apiNews = await fetchEthicalWebNews();
+  const newsItems =
+    apiNews.length > 0
+      ? apiNews.map((item) => ({
+          slug: item.slug,
+          title: item.title,
+          excerpt: item.excerpt,
+          image: item.image,
+          dateLabel: item.dateLabel || "News",
+        }))
+      : fallbackNews;
+
   return (
     <>
       <PageHero
@@ -29,7 +43,6 @@ export default function NewsPage() {
           ))}
         </div>
       </section>
-
     </>
   );
 }

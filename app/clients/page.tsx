@@ -45,9 +45,9 @@ export default function ClientsPage() {
             description="Ethical Certifications provides this verification system so interested parties can confirm the validity and current status of management system and inspection certificates — supporting transparency and helping prevent misuse of certification."
           />
           <p className="mt-5 max-w-3xl text-muted leading-relaxed">
-            Every certificate is assigned a unique certificate number. Enter it below to request
-            verification details such as organization name, certified standard, scope, status, and
-            validity period. You can also email a scanned copy to{" "}
+            Search by certificate number to confirm certification details such as organization
+            name, certified standard, scope, status, and audit phase. You can also email a scanned
+            copy to{" "}
             <a
               className="font-semibold text-primary underline-offset-2 hover:underline"
               href={`mailto:${siteConfig.email}`}

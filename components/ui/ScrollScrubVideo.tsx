@@ -238,11 +238,11 @@ export function ScrollScrubVideo({
     </div>
   );
 
-  if (reduce) {
+  if (reduce || isCoarse) {
     return (
       <section
         ref={containerRef}
-        className={cn("relative overflow-hidden bg-background py-20 md:py-28", className)}
+        className={cn("relative overflow-x-clip bg-background py-16 md:py-28", className)}
       >
         <div className="container-premium">
           <SectionHeading eyebrow={eyebrow} title={title} description={description} />

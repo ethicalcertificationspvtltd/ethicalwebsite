@@ -83,7 +83,7 @@ export function FooterScrollReveal({ children }: { children: React.ReactNode }) 
   }, [reduce]);
 
   return (
-    <footer ref={ref} className="relative overflow-hidden footer-gradient text-foreground">
+    <footer ref={ref} className="surface-dark relative overflow-hidden footer-gradient">
       {children}
     </footer>
   );

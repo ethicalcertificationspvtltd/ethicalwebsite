@@ -95,7 +95,7 @@ export function FinalCtaSection() {
       <div className="container-premium relative z-10">
         <div
           data-cta-panel
-          className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#005953] via-[#007a6e] to-[#24a87c] px-8 py-12 shadow-[0_24px_60px_rgba(0,89,83,0.25)] md:px-14 md:py-16"
+          className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#005953] via-[#007a6e] to-[#24a87c] px-5 py-10 shadow-[0_24px_60px_rgba(0,89,83,0.25)] sm:px-8 sm:py-12 md:px-14 md:py-16"
           style={{ transformStyle: "preserve-3d" }}
         >
           <div className="cta-floating-cert" aria-hidden />
@@ -108,18 +108,18 @@ export function FinalCtaSection() {
             <p data-cta-part className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">
               Ready to begin
             </p>
-            <h2 data-cta-part className="mt-3 font-display text-4xl font-bold tracking-tight text-white md:text-5xl">
+            <h2 data-cta-part className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
               Ready to Get Certified?
             </h2>
             <p data-cta-part className="mt-4 text-base leading-relaxed text-white/85 md:text-lg">
               Speak with our certification experts and find the right path for your organization.
             </p>
-            <div data-cta-part className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <MagneticButton href="/contact#quote" size="lg" variant="white">
+            <div data-cta-part className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+              <MagneticButton href="/contact#quote" size="lg" variant="white" className="w-full sm:w-auto">
                 Get Free Quote
                 <ArrowRight className="h-4 w-4" />
               </MagneticButton>
-              <MagneticButton href="/contact" size="lg" variant="ghost">
+              <MagneticButton href="/contact" size="lg" variant="ghost" className="w-full sm:w-auto">
                 Contact Us
               </MagneticButton>
             </div>

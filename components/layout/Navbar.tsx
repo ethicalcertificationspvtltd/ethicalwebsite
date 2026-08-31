@@ -54,13 +54,9 @@ export function Navbar() {
   const linkClass = (href: string) =>
     cn(
       "nav-link-premium whitespace-nowrap rounded-lg px-2 py-2 text-[0.8125rem] font-medium transition-colors duration-300 2xl:px-2.5 2xl:text-sm",
-      transparent
-        ? isActive(pathname, href)
-          ? "text-white"
-          : "text-white/75 hover:text-white"
-        : isActive(pathname, href)
-          ? "text-[#005953]"
-          : "text-[#005953]/70 hover:text-[#005953]",
+      isActive(pathname, href)
+        ? "text-[#005953]"
+        : "text-[#005953]/70 hover:text-[#005953]",
     );
 
   return (
@@ -69,12 +65,12 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b transition-all duration-500",
           transparent
-            ? "border-transparent bg-transparent"
+            ? "border-transparent bg-[#eef8f5]/72 backdrop-blur-xl"
             : "surface-light border-primary/15 bg-white/78 shadow-[0_4px_32px_rgba(0,89,83,0.1)] backdrop-blur-2xl",
         )}
       >
         <div className="container-premium flex h-[4.5rem] items-center justify-between gap-3 md:h-[4.75rem] xl:gap-4">
-          <BrandLogoInteractive priority className={cn(transparent && "[&_img]:brightness-0 [&_img]:invert")} />
+          <BrandLogoInteractive priority />
 
           <nav
             className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex"
@@ -96,12 +92,8 @@ export function Navbar() {
             <Button
               href="/clients#verify"
               size="sm"
-              variant={transparent ? "ghost" : "outline"}
-              className={
-                transparent
-                  ? undefined
-                  : "!border-primary/20 !bg-white !text-[#005953] hover:!bg-[#f8fcfb]"
-              }
+              variant="outline"
+              className="!border-primary/20 !bg-white !text-[#005953] hover:!bg-[#f8fcfb]"
             >
               <ShieldCheck className="h-3.5 w-3.5" />
               <span className="hidden lg:inline">Verify Certificate</span>
@@ -112,12 +104,7 @@ export function Navbar() {
             </Button>
             <button
               type="button"
-              className={cn(
-                "inline-flex h-10 w-10 items-center justify-center rounded-lg border transition xl:hidden",
-                transparent
-                  ? "border-white/25 bg-white/10 text-white hover:bg-white/15"
-                  : "border-primary/15 bg-white text-[#005953] hover:border-primary/30",
-              )}
+              className="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-primary/15 bg-white text-[#005953] transition hover:border-primary/30 xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -136,7 +123,8 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="surface-light fixed inset-0 z-40 overflow-y-auto bg-white px-6 pb-10 pt-24 xl:hidden"
+            className="surface-light fixed inset-0 z-[80] overflow-y-auto bg-white px-6 pb-10 pt-24 xl:hidden"
+            data-lenis-prevent
           >
             <nav className="flex flex-col gap-1" aria-label="Mobile">
               {links.map((link) => (

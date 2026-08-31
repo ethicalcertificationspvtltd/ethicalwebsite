@@ -73,7 +73,7 @@ export function CertificationCard({
   href: string;
 }) {
   return (
-    <TiltCard intensity={5} className="cert-flip-card group min-w-[280px] snap-center md:min-w-[320px]" scaleOnHover={1.02}>
+    <TiltCard intensity={5} className="cert-flip-card group min-w-[min(100%,17.5rem)] snap-center sm:min-w-[280px] md:min-w-[320px]" scaleOnHover={1.02}>
       <div className="cert-flip-inner h-full">
         <Link
           href={href}
@@ -125,7 +125,7 @@ export function CertificationCard({
           href={href}
           tabIndex={-1}
           aria-hidden
-          className="cert-flip-back surface-light flex h-full flex-col justify-between rounded-2xl border border-primary/25 bg-gradient-to-br from-[#005953] to-[#007a6e] p-6 text-white shadow-[0_20px_50px_rgba(0,89,83,0.2)]"
+          className="cert-flip-back surface-dark flex h-full flex-col justify-between rounded-2xl border border-primary/25 bg-gradient-to-br from-[#005953] to-[#007a6e] p-6 text-white shadow-[0_20px_50px_rgba(0,89,83,0.2)]"
         >
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">{code}</p>

@@ -58,6 +58,7 @@ export function HeroSection() {
 
   useEffect(() => {
     if (reduce || !sectionRef.current) return;
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
     registerGsap();
 
     const ctx = gsap.context(() => {
@@ -161,19 +162,19 @@ export function HeroSection() {
 
   return (
     <section ref={sectionRef} data-section-tone="hero" className="relative overflow-x-clip bg-transparent">
-      <div className="container-premium relative z-10 pb-0 pt-[5.5rem] md:pt-28">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10 xl:gap-14">
-          <div ref={contentRef} className="relative z-20 min-w-0 py-4 lg:py-8 will-change-transform">
+      <div className="container-premium relative z-10 pb-0 pt-24 sm:pt-[5.5rem] md:pt-28">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10 xl:gap-14">
+          <div ref={contentRef} className="relative z-20 min-w-0 py-2 sm:py-4 lg:py-8 will-change-transform">
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease }}
-              className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-white/90"
+              className="brand-pill mb-4"
             >
               SAAC & PNAC Accredited
             </motion.p>
 
-            <h1 className="max-w-[560px] font-display text-[2.35rem] font-bold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-[3.15rem]">
+            <h1 className="max-w-[560px] font-display text-[1.85rem] font-bold leading-[1.08] tracking-tight text-[#005953] min-[400px]:text-[2.1rem] sm:text-5xl lg:text-[3.15rem]">
               {headlineLines.map((line, i) => (
                 <RevealLine key={line} text={line} delay={0.18 + i * 0.12} />
               ))}
@@ -183,7 +184,7 @@ export function HeroSection() {
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45, ease }}
-              className="mt-5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base"
+              className="mt-5 max-w-xl text-sm leading-relaxed text-[#4a7a74] sm:text-base"
             >
               Independent, accredited certification and inspection services helping organizations
               achieve international standards, strengthen credibility, and unlock new business
@@ -194,13 +195,13 @@ export function HeroSection() {
               initial={reduce ? false : { opacity: 0, y: 16, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.58, ease }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap"
             >
-              <Button href="/contact#quote" size="lg" className="neu-btn px-7">
+              <Button href="/contact#quote" size="lg" className="neu-btn w-full px-7 sm:w-auto">
                 Get Free Quote
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button href="/certifications/iso-9001" size="lg" variant="outline">
+              <Button href="/certifications/iso-9001" size="lg" variant="outline" className="w-full sm:w-auto">
                 Explore Certifications
               </Button>
               <Button href="/clients#verify" size="lg" variant="ghost" className="hidden sm:inline-flex">
@@ -222,10 +223,10 @@ export function HeroSection() {
                   transition={{ duration: 0.45, delay: 0.82 + i * 0.08, ease }}
                   className="flex flex-col items-center gap-2 text-center"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-white text-[#005953] shadow-[0_4px_14px_rgba(0,89,83,0.12)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,89,83,0.18)]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/15 bg-white text-[#005953] shadow-[0_4px_14px_rgba(0,89,83,0.12)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,89,83,0.18)]">
                     <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
                   </span>
-                  <span className="max-w-[88px] text-[11px] font-semibold leading-tight text-white/90">
+                  <span className="max-w-[88px] text-[11px] font-semibold leading-tight text-[#005953]">
                     {label}
                   </span>
                 </motion.div>
@@ -238,7 +239,7 @@ export function HeroSection() {
             initial={reduce ? false : { opacity: 0, y: 24, scale: 0.85, rotateY: 6 }}
             animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
             transition={{ duration: 0.95, delay: 0.35, ease }}
-            className="relative min-h-[420px] w-full min-w-0 will-change-transform sm:min-h-[480px] lg:min-h-[560px]"
+            className="relative min-h-[280px] w-full min-w-0 will-change-transform sm:min-h-[380px] md:min-h-[480px] lg:min-h-[560px]"
             style={{ transformStyle: "preserve-3d" }}
           >
             <HeroCertificateVisual className="h-full w-full" />
@@ -248,10 +249,10 @@ export function HeroSection() {
 
       <HeroTrustBadges />
 
-      <div ref={trustRef} className="relative z-10 mt-2 bg-transparent pb-6 pt-2 md:mt-4 md:pb-8">
+      <div ref={trustRef} className="relative z-10 mt-2 bg-transparent pb-4 pt-2 md:mt-4 md:pb-8">
         <div className="container-premium">
           <div className="surface-light overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_10px_40px_rgba(0,89,83,0.08)]">
-            <div className="border-b border-primary/8 bg-[#f8fcfb] px-5 py-3.5 text-center sm:px-8">
+            <div className="border-b border-primary/8 bg-[#f8fcfb] px-4 py-3 text-center sm:px-8 sm:py-3.5">
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#005953] sm:text-[0.72rem]">
                 Trusted by organizations around the world
               </p>

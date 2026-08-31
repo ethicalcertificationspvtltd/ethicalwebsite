@@ -126,7 +126,7 @@ export function TestimonialsSection() {
                 if (dx > 50) prev();
                 if (dx < -50) next();
               }}
-              className="surface-light testimonial-card-active relative z-10 mx-auto max-w-4xl cursor-grab active:cursor-grabbing rounded-3xl border border-border/90 bg-card/95 p-8 shadow-[0_30px_80px_rgba(11,18,16,0.08)] backdrop-blur-sm md:p-12"
+              className="surface-light testimonial-card-active relative z-10 mx-auto max-w-4xl cursor-grab active:cursor-grabbing rounded-3xl border border-border/90 bg-card/95 p-6 shadow-[0_30px_80px_rgba(11,18,16,0.08)] backdrop-blur-sm sm:p-8 md:p-12"
               style={{ transformStyle: "preserve-3d" }}
             >
               <TestimonialContent item={testimonials[index]} index={index} />
@@ -153,10 +153,14 @@ export function TestimonialsSection() {
                     setDir(i > index ? 1 : -1);
                     setIndex(i);
                   }}
-                  className={`h-2.5 rounded-full transition-all ${
-                    i === index ? "w-7 bg-primary" : "w-2.5 bg-border hover:bg-primary/40"
-                  }`}
-                />
+                  className="flex h-11 w-11 items-center justify-center"
+                >
+                  <span
+                    className={`block rounded-full transition-all ${
+                      i === index ? "h-2.5 w-7 bg-primary" : "h-2.5 w-2.5 bg-border hover:bg-primary/40"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
             <button
@@ -234,7 +238,7 @@ function TestimonialContent({
           hidden: { opacity: 0, y: 16 },
           show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
         }}
-        className="font-display text-2xl leading-relaxed text-foreground"
+        className="font-display text-xl leading-relaxed text-foreground sm:text-2xl"
       >
         “{item.quote}”
       </motion.p>

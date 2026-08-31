@@ -105,7 +105,7 @@ export function HowItWorksSection() {
 
   return (
     <section ref={sectionRef} data-section-tone="mint" className="relative overflow-hidden bg-muted-bg/30">
-      <div ref={pinRef} className="relative min-h-[100svh] py-20 md:py-28">
+      <div ref={pinRef} className="relative min-h-0 py-16 md:py-28 lg:min-h-[100svh]">
         <ParallaxLayer speed={-8} className="pointer-events-none absolute inset-0 tech-grid opacity-25" />
         <div className="container-premium relative z-10">
           <SectionHeadingScroll

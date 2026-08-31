@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 type Crumb = { label: string; href?: string };
 
@@ -29,7 +28,7 @@ export function PageHero({
         {breadcrumbs ? (
           <motion.nav
             aria-label="Breadcrumb"
-            className="mb-6 text-sm text-white/70"
+            className="mb-6 text-sm text-muted"
             initial={reduce ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease }}
@@ -39,7 +38,7 @@ export function PageHero({
                 <li key={c.label} className="flex items-center gap-2">
                   {i > 0 ? <span>/</span> : null}
                   {c.href ? (
-                    <Link href={c.href} className="transition hover:text-white">
+                    <Link href={c.href} className="transition hover:text-primary">
                       {c.label}
                     </Link>
                   ) : (
@@ -64,7 +63,7 @@ export function PageHero({
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.08, ease }}
-          className="max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-balance text-white md:text-5xl lg:text-6xl"
+          className="max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-balance text-foreground md:text-5xl lg:text-6xl"
         >
           {title}
         </motion.h1>
@@ -73,7 +72,7 @@ export function PageHero({
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.14, ease }}
-            className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg"
+            className="mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg"
           >
             {description}
           </motion.p>

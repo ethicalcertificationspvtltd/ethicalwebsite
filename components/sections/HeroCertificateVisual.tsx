@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ShieldCheck } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { usePointerParallax } from "@/lib/usePointerParallax";
@@ -63,14 +62,6 @@ const certificates = [
   },
 ] as const;
 
-const sparkles = [
-  { t: 28, l: 72, d: 0 },
-  { t: 38, l: 85, d: 0.4 },
-  { t: 48, l: 78, d: 0.8 },
-  { t: 35, l: 92, d: 1.2 },
-  { t: 55, l: 68, d: 0.6 },
-];
-
 const particles = [
   { t: 18, l: 22, s: 3, d: 0 },
   { t: 62, l: 14, s: 2, d: 1.2 },
@@ -78,36 +69,6 @@ const particles = [
   { t: 42, l: 8, s: 2, d: 2 },
   { t: 24, l: 58, s: 2, d: 1.8 },
 ];
-
-function RecessedSpotlight({
-  align,
-  reduce,
-  delay = 0,
-}: {
-  align: "left" | "center" | "right";
-  reduce: boolean;
-  delay?: number;
-}) {
-  return (
-    <div className={cn("hero-recess-light hero-parallax-slow", `hero-recess-light--${align}`)}>
-      <div className="hero-recess-ring">
-        <div
-          className={cn("hero-recess-bulb", !reduce && "hero-recess-bulb--pulse")}
-          style={!reduce && delay ? { animationDelay: `${delay}s` } : undefined}
-        />
-      </div>
-      {!reduce && (
-        <div
-          className={cn("hero-recess-beams", `hero-recess-beams--${align}`)}
-          style={delay ? { animationDelay: `${delay}s` } : undefined}
-        >
-          <div className="hero-recess-beam-glow" />
-          <div className="hero-recess-beam-core" />
-        </div>
-      )}
-    </div>
-  );
-}
 
 export function HeroCertificateVisual({ className }: { className?: string }) {
   const reduce = useReducedMotion();
@@ -125,20 +86,6 @@ export function HeroCertificateVisual({ className }: { className?: string }) {
     >
       {/* Depth layers */}
       <div className="hero-parallax-bg hero-studio-bg" />
-      <div className="hero-orbit hero-orbit--outer hero-orbit-scrub" aria-hidden />
-      <div className="hero-orbit hero-orbit--inner hero-orbit-scrub" aria-hidden />
-      <div className="hero-grid-lines" aria-hidden />
-
-      {!reduce && (
-        <>
-          <div className="hero-glass-panel hero-glass-panel--1 hero-parallax-mid" aria-hidden />
-          <div className="hero-glass-panel hero-glass-panel--2 hero-parallax-mid" aria-hidden />
-          <div className="hero-glass-panel hero-glass-panel--3 hero-parallax-slow" aria-hidden />
-          <div className="hero-verify-check hero-parallax-mid">
-            <ShieldCheck className="h-4 w-4" strokeWidth={2.5} />
-          </div>
-        </>
-      )}
 
       {!reduce &&
         particles.map((p, i) => (
@@ -151,24 +98,6 @@ export function HeroCertificateVisual({ className }: { className?: string }) {
               width: p.s,
               height: p.s,
               animationDelay: `${p.d}s`,
-            }}
-          />
-        ))}
-
-      <div className="hero-studio-ceiling hero-parallax-slow" />
-      <RecessedSpotlight align="left" reduce={!!reduce} />
-      <RecessedSpotlight align="center" reduce={!!reduce} delay={0.7} />
-      <RecessedSpotlight align="right" reduce={!!reduce} delay={1.4} />
-
-      {!reduce &&
-        sparkles.map((s, i) => (
-          <span
-            key={i}
-            className="hero-sparkle hero-parallax-mid"
-            style={{
-              top: `${s.t}%`,
-              left: `${s.l}%`,
-              animationDelay: `${s.d}s`,
             }}
           />
         ))}
@@ -222,7 +151,6 @@ export function HeroCertificateVisual({ className }: { className?: string }) {
         </div>
       )}
 
-      {/* Floating ISO badges — independent motion */}
       {!reduce && (
         <>
           <HeroFloatingBadge
@@ -249,7 +177,6 @@ export function HeroCertificateVisual({ className }: { className?: string }) {
         className="hero-accreditation-seal hero-parallax-mid"
         aria-hidden
       >
-        <div className="hero-accreditation-seal-ring" />
         <Image
           src="/assets/accreditations/saac.png"
           alt=""
@@ -258,8 +185,6 @@ export function HeroCertificateVisual({ className }: { className?: string }) {
           className="relative z-10 h-12 w-12 object-contain opacity-90 sm:h-14 sm:w-14"
         />
       </div>
-
-      <div className="hero-studio-floor hero-parallax-slow" />
 
       <div className="hero-cert-stage hero-parallax-stage">
         <div

@@ -45,8 +45,8 @@ export function SectionHeading({
       <h2
         className={cn(
           "font-display text-4xl font-bold leading-[1.06] tracking-tight text-balance md:text-5xl",
-          light === false ? "text-foreground" : "text-white",
-          gradientTitle && light !== false && "text-gradient-ignite",
+          light === true ? "text-white" : "text-foreground",
+          gradientTitle && light === true && "text-gradient-ignite",
         )}
       >
         {title}
@@ -56,7 +56,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-4 text-base leading-relaxed md:text-lg",
-            light === false ? "text-muted" : "text-white/75",
+            light === true ? "text-white/75" : "text-muted",
           )}
         >
           {description}

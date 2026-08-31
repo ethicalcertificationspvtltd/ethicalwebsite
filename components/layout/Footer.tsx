@@ -25,7 +25,7 @@ export function Footer() {
       <div className="container-premium relative z-10 py-16 md:py-20">
         <div
           data-footer-banner
-          className="relative mb-16 overflow-hidden rounded-3xl border border-border/80 surface-light bg-white/70 px-8 py-10 shadow-[0_16px_48px_rgba(0,89,83,0.06)] backdrop-blur-sm md:px-12 md:py-12"
+          className="relative mb-16 overflow-hidden rounded-3xl border border-border/80 surface-light bg-white/70 px-5 py-8 shadow-[0_16px_48px_rgba(0,89,83,0.06)] backdrop-blur-sm sm:px-8 sm:py-10 md:px-12 md:py-12"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary-soft/40 via-transparent to-transparent" />
           <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
@@ -54,7 +54,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           <div data-footer-col>
             <BrandLogo className="h-12 w-[160px] md:h-12" />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
               {siteConfig.name} is an independent third-party ISO certification and
               inspection organization accredited by SAAC and PNAC on{" "}
               {siteConfig.accreditationStandards.join(" & ")}.
@@ -79,13 +79,13 @@ export function Footer() {
           </div>
 
           <div data-footer-col>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-soft">
               Services
             </h3>
             <ul className="mt-5 space-y-3">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link href={s.href} className="text-sm text-muted transition hover:text-primary">
+                  <Link href={s.href} className="text-sm text-white/75 transition hover:text-white">
                     {s.shortTitle}
                   </Link>
                 </li>
@@ -94,58 +94,58 @@ export function Footer() {
           </div>
 
           <div data-footer-col>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-soft">
               Company
             </h3>
-            <ul className="mt-5 space-y-3 text-sm text-muted">
+            <ul className="mt-5 space-y-3 text-sm text-white/75">
               <li>
-                <Link href="/about" className="hover:text-primary">
+                <Link href="/about" className="hover:text-white">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/accreditation" className="hover:text-primary">
+                <Link href="/accreditation" className="hover:text-white">
                   Accreditation
                 </Link>
               </li>
               <li>
-                <Link href="/clients" className="hover:text-primary">
+                <Link href="/clients" className="hover:text-white">
                   Clients
                 </Link>
               </li>
               <li>
-                <Link href="/clients#verify" className="hover:text-primary">
+                <Link href="/clients#verify" className="hover:text-white">
                   Certificate Verification
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="hover:text-primary">
+                <Link href="/news" className="hover:text-white">
                   Resources
                 </Link>
               </li>
               <li>
-                <Link href="/new-client" className="hover:text-primary">
+                <Link href="/new-client" className="hover:text-white">
                   New Client Application
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-primary">
+                <Link href="/contact" className="hover:text-white">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/clients#feedback" className="hover:text-primary">
+                <Link href="/clients#feedback" className="hover:text-white">
                   Complaints & Appeals
                 </Link>
               </li>
             </ul>
-            <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-primary-soft">
               Certifications
             </h3>
-            <ul className="mt-4 space-y-2 text-sm text-muted">
+            <ul className="mt-4 space-y-2 text-sm text-white/75">
               {certifications.slice(0, 5).map((c) => (
                 <li key={c.slug}>
-                  <Link href={c.href} className="hover:text-primary">
+                  <Link href={c.href} className="hover:text-white">
                     {c.code}
                     {c.year ? `:${c.year}` : ""}
                   </Link>
@@ -155,32 +155,32 @@ export function Footer() {
           </div>
 
           <div data-footer-col>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-soft">
               Contact
             </h3>
-            <ul className="mt-5 space-y-4 text-sm text-muted">
+            <ul className="mt-5 space-y-4 text-sm text-white/75">
               <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-soft" />
                 <span>
-                  <span className="block font-semibold text-foreground">Pakistan</span>
+                  <span className="block font-semibold text-white">Pakistan</span>
                   {siteConfig.addresses.pakistan}
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-primary">
+                <Mail className="h-4 w-4 text-primary-soft" />
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
                   {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <a href={`tel:${siteConfig.phones.pakistanSalesTel}`} className="hover:text-primary">
+                <Phone className="h-4 w-4 text-primary-soft" />
+                <a href={`tel:${siteConfig.phones.pakistanSalesTel}`} className="hover:text-white">
                   PK: {siteConfig.phones.pakistanSales}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <a href={`tel:${siteConfig.phones.pakistanAdminTel}`} className="hover:text-primary">
+                <Phone className="h-4 w-4 text-primary-soft" />
+                <a href={`tel:${siteConfig.phones.pakistanAdminTel}`} className="hover:text-white">
                   PK Admin: {siteConfig.phones.pakistanAdmin}
                 </a>
               </li>
@@ -190,7 +190,7 @@ export function Footer() {
 
         <div
           data-footer-copy
-          className="mt-14 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted md:flex-row md:items-center md:justify-between"
+          className="mt-14 flex flex-col gap-3 border-t border-white/15 pt-6 text-xs text-white/70 md:flex-row md:items-center md:justify-between"
         >
           <p>Copyright © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <p>{siteConfig.tagline}</p>

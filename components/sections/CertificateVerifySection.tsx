@@ -88,7 +88,7 @@ export function CertificateVerifySection() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(36,168,124,0.18),transparent_45%)]" />
 
           <div className="relative z-10 grid items-center gap-8 lg:grid-cols-[1fr_1.1fr_auto] lg:gap-10">
-            <div ref={docRef} className="order-2 lg:order-1">
+            <div ref={docRef} className="order-2 mx-auto w-full max-w-xs lg:order-1 lg:max-w-none">
               <VerifyCertificateVisual />
             </div>
 
@@ -101,7 +101,7 @@ export function CertificateVerifySection() {
                 Certificate Verification
               </div>
               <div data-verify-part>
-                <h2 className="max-w-2xl font-display text-4xl font-bold leading-[1.06] tracking-tight text-white md:text-5xl">
+                <h2 className="max-w-2xl font-display text-3xl font-bold leading-[1.06] tracking-tight text-white sm:text-4xl md:text-5xl">
                   Verify an Ethical Certifications certificate
                 </h2>
               </div>
@@ -111,7 +111,7 @@ export function CertificateVerifySection() {
             </div>
 
             <div data-verify-part className="order-3 flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-stretch">
-              <Button href="/clients#verify" size="lg" variant="white">
+              <Button href="/clients#verify" size="lg" variant="white" className="w-full sm:w-auto">
                 Verify Certificate
                 <ArrowRight className="h-4 w-4" />
               </Button>
