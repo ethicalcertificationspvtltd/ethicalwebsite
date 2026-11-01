@@ -4,7 +4,6 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { CustomCursor } from "@/components/layout/CustomCursor";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { PageLoader } from "@/components/layout/PageLoader";
 import { FloatingContact } from "@/components/layout/FloatingContact";
@@ -119,7 +118,6 @@ export default function RootLayout({
           <BackgroundTriangles />
           <PageLoader />
           <ScrollProgress />
-          <CustomCursor />
           <Navbar />
           <FloatingContact />
           <PageTransition>

@@ -122,7 +122,7 @@ export function CertificateVerifySearch() {
               }
             }}
             className={cn(fieldClass, "pl-10")}
-            placeholder="Enter certificate number (e.g. EC-211282K301-Q)"
+            placeholder="Enter certificate number"
             autoComplete="off"
             spellCheck={false}
           />
