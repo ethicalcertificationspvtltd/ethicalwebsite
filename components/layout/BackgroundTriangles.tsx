@@ -1,13 +1,8 @@
 "use client";
 
-import {
-  motion,
-  useMotionTemplate,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import type { CSSProperties } from "react";
+import { useIsMobile } from "@/lib/useMediaQuery";
 
 type Tri = {
   x: number;
@@ -33,10 +28,6 @@ const triangles: Tri[] = [
   { x: 72, y: 42, size: 40, rotate: -28, fill: "rgba(0,89,83,0.04)", stroke: "rgba(0,89,83,0.12)", float: true, delay: 0.3 },
   { x: 28, y: 48, size: 32, rotate: 20, fill: "rgba(36,168,124,0.05)", stroke: "rgba(0,89,83,0.14)" },
   { x: 55, y: 68, size: 46, rotate: -15, fill: "rgba(0,89,83,0.05)", stroke: "rgba(0,89,83,0.15)", float: true, delay: 0.7 },
-  { x: 38, y: 88, size: 38, rotate: 30, fill: "rgba(0,122,110,0.04)", stroke: "rgba(0,89,83,0.12)" },
-  { x: 65, y: 12, size: 34, rotate: -48, fill: "rgba(36,168,124,0.05)", stroke: "rgba(0,89,83,0.14)", delay: 1.8 },
-  { x: 22, y: 72, size: 42, rotate: 8, fill: "rgba(0,89,83,0.04)", stroke: "rgba(0,89,83,0.12)", float: true, delay: 0.4 },
-  { x: 78, y: 88, size: 50, rotate: -22, fill: "rgba(0,122,110,0.05)", stroke: "rgba(0,89,83,0.15)" },
 ];
 
 function TriangleSvg({ tri }: { tri: Tri }) {
@@ -62,21 +53,16 @@ function TriangleSvg({ tri }: { tri: Tri }) {
 
 export function BackgroundTriangles() {
   const reduce = useReducedMotion();
-  const { scrollY } = useScroll();
-  const blurPx = useTransform(scrollY, [0, 200, 600, 1200], [0, 4, 10, 16]);
-  const bgBlur = useMotionTemplate`blur(${blurPx}px)`;
-  const fade = useTransform(scrollY, [0, 400, 1000], [1, 0.75, 0.5]);
+  const mobile = useIsMobile();
+
+  if (reduce || mobile) return null;
 
   return (
-    <motion.div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
-      style={reduce ? undefined : { filter: bgBlur, opacity: fade }}
-    >
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-[1] overflow-hidden">
       {triangles.map((tri, i) => (
         <div
           key={i}
-          className={!reduce && tri.float ? "absolute animate-triangle-float" : "absolute"}
+          className={tri.float ? "absolute animate-triangle-float" : "absolute"}
           style={
             {
               left: `${tri.x}%`,
@@ -89,6 +75,6 @@ export function BackgroundTriangles() {
           <TriangleSvg tri={tri} />
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }

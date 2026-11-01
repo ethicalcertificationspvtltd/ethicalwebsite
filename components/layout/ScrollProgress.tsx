@@ -1,14 +1,19 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
+/** Thin top progress bar — desktop only (avoids spring work on mobile scroll). */
 export function ScrollProgress() {
+  const enabled = useMediaQuery("(min-width: 1024px)");
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 28,
+    stiffness: 120,
+    damping: 30,
     restDelta: 0.001,
   });
+
+  if (!enabled) return null;
 
   return (
     <motion.div

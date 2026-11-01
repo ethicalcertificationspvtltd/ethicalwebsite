@@ -6,18 +6,21 @@ import { ReactLenis, type LenisRef } from "lenis/react";
 import { cancelFrame, frame, useReducedMotion } from "framer-motion";
 import "lenis/dist/lenis.css";
 import { GsapLenisSync, GsapReducedMotion } from "@/components/animations/GsapLenisSync";
+import { useIsDesktopFine } from "@/lib/useMediaQuery";
 
 /**
- * Paymark-style inertia scrolling — Lenis synced to Framer Motion's frame loop
- * so useScroll / whileInView stay in lockstep with the smooth scroll.
+ * Desktop-only inertia scrolling. Disabled on mobile / coarse pointers /
+ * reduced-motion to keep scroll cheap and native.
  */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const reduce = useReducedMotion();
+  const desktopFine = useIsDesktopFine();
+  const enabled = desktopFine && !reduce;
   const lenisRef = useRef<LenisRef>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    if (reduce) return;
+    if (!enabled) return;
 
     function update(data: { timestamp: number }) {
       lenisRef.current?.lenis?.raf(data.timestamp);
@@ -25,24 +28,29 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     frame.update(update, true);
     return () => cancelFrame(update);
-  }, [reduce]);
+  }, [enabled]);
 
   useEffect(() => {
     const lenis = lenisRef.current?.lenis;
-    if (!lenis || reduce) return;
+    if (!lenis || !enabled) return;
 
     const hash = window.location.hash;
     if (hash) {
       requestAnimationFrame(() => {
-        lenis.scrollTo(hash, { offset: -112, duration: 1.2 });
+        lenis.scrollTo(hash, { offset: -112, duration: 1.0 });
       });
     } else {
       lenis.scrollTo(0, { immediate: true });
     }
-  }, [pathname, reduce]);
+  }, [pathname, enabled]);
 
-  if (reduce) {
-    return <>{children}</>;
+  if (!enabled) {
+    return (
+      <>
+        <GsapReducedMotion />
+        {children}
+      </>
+    );
   }
 
   return (
@@ -51,15 +59,15 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       ref={lenisRef}
       options={{
         autoRaf: false,
-        duration: 1.2,
+        duration: 1.0,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         syncTouch: false,
         touchMultiplier: 1.6,
-        wheelMultiplier: 0.95,
+        wheelMultiplier: 0.9,
         anchors: {
           offset: -112,
-          duration: 1.25,
+          duration: 1.0,
         },
       }}
     >

@@ -3,19 +3,22 @@
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
 import { gsap, registerGsap } from "@/lib/gsap/config";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 const TONES = ["hero", "surface", "deep", "mint"] as const;
 
 /**
  * Scroll-scrubbed ambient background crossfade across homepage sections.
- * Sections declare tone via data-section-tone="hero|surface|deep|mint".
+ * Desktop only — skipped on mobile / reduced motion for scroll performance.
  */
 export function SectionBackgroundTransition() {
   const rootRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const wide = useMediaQuery("(min-width: 1024px)");
+  const enabled = wide && !reduce;
 
   useEffect(() => {
-    if (reduce || !rootRef.current) return;
+    if (!enabled || !rootRef.current) return;
     registerGsap();
 
     const sections = document.querySelectorAll<HTMLElement>("[data-section-tone]");
@@ -63,9 +66,9 @@ export function SectionBackgroundTransition() {
     });
 
     return () => ctx.revert();
-  }, [reduce]);
+  }, [enabled]);
 
-  if (reduce) return null;
+  if (!enabled) return null;
 
   return (
     <div ref={rootRef} className="atmo-canvas pointer-events-none fixed inset-0 z-0" aria-hidden>
